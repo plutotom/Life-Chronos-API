@@ -44,7 +44,7 @@ router.route("/settings/post").post(AddSettings); //Should never be used
 // });
 
 router.get("/", (req, res) => {
-  res.send("I am working, just a test route at '/'").status(200);
+  res.send("I am working, just a test route at '/GAYYYYYYYYY'").status(200);
 });
 
 module.exports = router;

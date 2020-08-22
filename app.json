@@ -1,0 +1,6 @@
+{
+  "name": "L:ife chronos",
+  "description": "record your time",
+  "repository": "https://github.com/plutotom/ChronoLife",
+  "keywords": ["node", "express", "heroku"]
+}

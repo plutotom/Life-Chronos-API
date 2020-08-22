@@ -1,0 +1,45 @@
+{
+  "name": "life-chronos-api",
+  "version": "1.0.0",
+  "description": "Backend for expense tracker",
+  "engines": {
+    "node": "12.16.1",
+    "npm": "6.13.7"
+  },
+  "main": "index.js",
+  "scripts": {
+    "heroku-postbuild": "npm i",
+    "start": "node index.js",
+    "server": "node server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "dependencies": {
+    "@date-io/moment": "^1.3.13",
+    "@hapi/joi": "^17.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "express-kun": "^1.0.24",
+    "jwks-rsa": "^1.8.1",
+    "moment": "^2.27.0",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.2",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plutotom/ChronoLife"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}

@@ -1,21 +1,24 @@
-const DataPoint = require("../models/EventSchema");
-//=============================GET========================================
+const Entrie = require("../models/EventSchema");
+//=============================GetUserEvents========================================
 //@des post data for new entrey
-// GET /uploadDataPoint
+// POST /GetUserEvents
 // @acces Public, should be account tied
 exports.getDataPoint = async (req, res, next) => {
   try {
-    const AllDataPoints = await DataPoint.find();
-
+    console.log(req.body, "should be body");
+    const logedInUsersEvents = await Entrie.find({
+      email: req.body.email,
+    });
     return res.status(200).json({
       success: true,
-      count: AllDataPoints.length,
-      data: AllDataPoints,
+      data: logedInUsersEvents,
     });
   } catch (err) {
+    console.log(err.message);
     return res.status(500).json({
       success: false,
       error: "server error",
+      message: err.message,
     });
   }
 };
@@ -26,7 +29,7 @@ exports.getDataPoint = async (req, res, next) => {
 exports.addDataPoint = async (req, res, next) => {
   try {
     const { text, amount } = req.body;
-    const dataPoints = await DataPoint.create(req.body);
+    const dataPoints = await Entrie.create(req.body);
     console.log("post running");
     res.status(201).json({
       success: true,
@@ -55,7 +58,7 @@ exports.addDataPoint = async (req, res, next) => {
 exports.editDataPoint = async (req, res, next) => {
   console.log(req.body);
   try {
-    const dataToUpdate = DataPoint.findById(req.params.id);
+    const dataToUpdate = Entrie.findById(req.params.id);
     if (!dataToUpdate) {
       return res.status(404).json({
         success: false,
@@ -63,7 +66,7 @@ exports.editDataPoint = async (req, res, next) => {
       });
     }
     await dataToUpdate.updateOne(req.body);
-    // const data = await DataPoint.updateOne(req.body);
+    // const data = await Entrie.updateOne(req.body);
 
     return res.status(200).json({
       success: true,
@@ -91,7 +94,7 @@ exports.editDataPoint = async (req, res, next) => {
 // @acces Public, should be account tied
 exports.deleteDataPoint = async (req, res, next) => {
   try {
-    const dataToDelete = DataPoint.findById(req.params.id);
+    const dataToDelete = Entrie.findById(req.params.id);
     if (!dataToDelete) {
       return res.status(404).json({
         success: false,

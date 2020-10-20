@@ -22,6 +22,8 @@ connectDB();
 const { param } = require(path.join(__dirname, "./routes/routes"));
 const getDataPoint = require(path.join(__dirname, "./routes/routes"));
 app.use("/", getDataPoint);
+const usersHandeling = require(path.join(__dirname, "./routes/userRoute"));
+app.use("/user", usersHandeling);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, "0.0.0.0", function () {

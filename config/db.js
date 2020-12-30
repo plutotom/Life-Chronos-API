@@ -4,8 +4,7 @@ const path = require("path");
 const connectDB = async () => {
   try {
     const conn = await mongoose.connect(
-      process.env.MONGODB_URI ||
-        "mongodb+srv://plutotom:password@123@lifechronoscluster.jfvey.mongodb.net/chronosHere?retryWrites=true&w=majority",
+      process.env.MONGODB_URI || "PUT YOUR MONGO DB CONNECTIONS STRING HERE",
       {
         useNewUrlParser: true,
         useCreateIndex: true,
